@@ -62,6 +62,12 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - Strong consistency.
   - Horizontal scalability and high availability. 
   - Financiual transactions.
+  - There is no AWS service do compare. Cloud Spanner is a leader. 
+  - Horizontally scalable and High available.
+  - Regional or multi-regional.
+  - Parent-child relationships.
+  - Interleaved table.
+
 
 - **Cloud SQL**:
   - Managed MySQL, SQL Server and PostgreSQL instances. 
@@ -84,6 +90,12 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - Fully-managed NoSQL document database.
   - Large collections of small JSON documents. 
   - Realtime database with mobile SDKS.
+  - Dynamic schema.
+  - Simple queries.
+  - Scales horizontally.
+  - Serverless NoSQL document store.
+  - Document = json data.
+  - Data types: string, integer, boolean, float, null, bytes, date and time, geographical point, array and map. Reference.
 
 - **Memorystore**:
   - Cache.
@@ -91,6 +103,10 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - In-memory DB, cache or message broker.
   - Built-in high availability.
   - Vertically scalable. 
+  - Compare to amazon elastic cache.
+  - Fully managed Redis instance.
+  - Basic and standard tier.
+  - Use cases: session cache.
 
 - Managing Data:
   - Sources ans sinks.
@@ -129,5 +145,17 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
     - Physical rackable storage device. 
     - Ship the full device back to Google. 
 
+- **Choosing Storage Options**:
 
+![alt text](./img/img3.png)
 
+![alt text](./img/img4.png)
+
+- **Exam Tips**:
+
+  - Choose de rith product. Memorise the flow chart.
+  - Consider the business requirement. Do not just pick the best tech solution. Provably there will be multiple answers that will fulfill the tech requirements but only one will fulfill the non-tech requirement.
+  - Get to know the ecosystem (hadoop).
+  - Do not over look security. Learn about the different  IAM roles for each service, and in particular how you would use them to separate users who can write data from those who just need to read data. 
+  
+    
