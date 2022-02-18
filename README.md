@@ -157,5 +157,46 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - Consider the business requirement. Do not just pick the best tech solution. Provably there will be multiple answers that will fulfill the tech requirements but only one will fulfill the non-tech requirement.
   - Get to know the ecosystem (hadoop).
   - Do not over look security. Learn about the different  IAM roles for each service, and in particular how you would use them to separate users who can write data from those who just need to read data. 
-  
-    
+
+
+## Big Data Ecosystem.
+
+- MapReduce:
+  - Programming model. Map and reduce functions.
+  - Distributed implementation.
+  - Created at Google. 
+
+- Hadoop and HDFS:
+  - Open source implementation of mapreduce. 
+  - Hadoop Common, Hadoop HDFS, Hadoop Yarn, Hadoop MapReduce. 
+
+- Apache Pig:
+  - Platform for analysing large datasets.
+  - Pig Latin defines analytics jobs.
+  - An abstraction for mapreduce.
+  - ETL. 
+
+- Apache Spark:
+  - Limitations of mapreduce:
+    - Linear dataflow. Slow.
+  - Spark:
+    - General purpose cluster-computing framework.
+    - RDDs. 
+    - Spark Core: SparkSQL, Spark Streaming, Spark MLLib, Spark Graph X.
+    - Java, Scala, Python, R.
+    - Cluster Manager, Storage System.
+
+![alt text](./img/img5.png)
+
+- Apache kafka:
+  - Publish/subscribe to streams of records. 
+  - Message bus, but for data. 
+  - High throughput and low latency. 
+  - Four main APIs: Producer, Consumer, Streams and Connector.
+
+![alt text](./img/img6.png)
+
+![alt text](./img/img7.png)
+
+
+
