@@ -152,7 +152,6 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
 ![alt text](./img/img4.png)
 
 - **Exam Tips**:
-
   - Choose de rith product. Memorise the flow chart.
   - Consider the business requirement. Do not just pick the best tech solution. Provably there will be multiple answers that will fulfill the tech requirements but only one will fulfill the non-tech requirement.
   - Get to know the ecosystem (hadoop).
@@ -198,5 +197,59 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
 
 ![alt text](./img/img7.png)
 
+## Real Time Messaging with Pub/Sub
 
+- Messagaging Middleware: decouple applications. 
+  - Without it, the system do not have resiliency. 
 
+- PUB/SUB:
+  - Global messaging and event ingestion.
+  - Serverless and fully-managed. 
+  - Multiple publisher/subscriber patterns.
+  - Ate least once delivery.
+  - Real time or batch.
+  - Integrate with dataflow, cloud functions, cloud run etc.
+  - Use cases:
+    - Distributing workloads.
+    - Asynchronous workflows.
+    - Device data streaming.
+    - Distributing event notifications.
+
+- PUB/SUB Basics.
+  - One to one, many to many, one to many etc. 
+  - Message 10 MB or less.
+  - Pull is the default delivery method. 
+  - Messages must be acknowledge.
+  - Push will send messages to an endpoint.
+  - Must be HTTPS with valid SSL cert. 
+  - gcloud pubsub topics list
+
+- Advanced features:
+  - Each message is delivered at least once for every subscription.
+  - Undelivered messages are deleted after the message retention period duration (by default 7 days).
+  - Messages published before a subscription is created will not be delivered to that subscription.
+  - Subscription expire after 31 days of inactivity (by default).
+  - New subscription with the same name have no relationship to the previous subscription.
+  - Acknowledge messages are no longer available to subscribles.
+  - Every message must be processed by a subscription.
+  - Order: messages may not be received in order. Can use timestamps to reorder the messages at the application.
+  - Messages are stored in the nearest region by default. 
+
+![alt text](./img/img8.png)
+
+![alt text](./img/img9.png)
+
+- **Exam Tips**:
+  - Decouple data:
+    - Try to spot where Pub/Sub would be good fit to decouple components that would normally send data directly to each other. Pub/Sub can be a shock absorber, receiving data globally and allowing it to be consumed by other components at their own pace. 
+  - Decouple services.
+    - Try to spot where Pub/Sub can add event logic to a stack. Pub/Sub can pass events from one system to another, ir order to create asynchronous workflows.
+  - Limitations:
+    - Pub/Sub has unrivalled capacity and latency globally but it has certain limitations. Message data must be 10 MB or less in size, and you need to be mindful of the expiry time of undelivered messages and unused subscriptions.
+  - Kafka:
+    - If Kafka comes up in the exam, PUB/SUB may be a great cloud service to replace it with, especially if a case studay calls for managed cloud service to be embraced. But kafka has a much broader feature set, so make sure Pub/Sub still meets the necessary technical requirements. 
+  - Cloud IoT:
+    - Cloud IoT Core manages secure device registration and connection, but all messages are handled by Cloud Pub/Sub.
+  - Cloud Taks *search.
+  - Browse reference architectures.
+    - Pub/Sub is normally the glue that holds together a data pipeline or other asynchronous workflow in a stack. Look at the smart analytical reference architectures to see how Pub/Sub works with other GCP products and services. 
