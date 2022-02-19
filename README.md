@@ -222,11 +222,18 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - Messages must be acknowledge.
   - Push will send messages to an endpoint.
   - Must be HTTPS with valid SSL cert. 
-  - gcloud pubsub topics list
+  - A push Subscription endpoint must accept an HTTPS POST with a valid SSL certificate. It must also be configured to use an authentication header.
+  - gcloud pubsub topics list.
+  - Pub/Sub is designed for:
+    - To enable asynchronous workflows.
+    - To decouple services and distribute workloads.
+    - To receive, buffer and distribute events.
+    - To receive, buffer and distribute data.
 
 - Advanced features:
   - Each message is delivered at least once for every subscription.
   - Undelivered messages are deleted after the message retention period duration (by default 7 days).
+  - Minimum retation periodo: 10 minutes.
   - Messages published before a subscription is created will not be delivered to that subscription.
   - Subscription expire after 31 days of inactivity (by default).
   - New subscription with the same name have no relationship to the previous subscription.
@@ -234,6 +241,7 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - Every message must be processed by a subscription.
   - Order: messages may not be received in order. Can use timestamps to reorder the messages at the application.
   - Messages are stored in the nearest region by default. 
+  - Most granular level for which you can configure access control for Pub/Sub: Across individual topics and subscription.
 
 ![alt text](./img/img8.png)
 
@@ -253,3 +261,7 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - Cloud Taks *search.
   - Browse reference architectures.
     - Pub/Sub is normally the glue that holds together a data pipeline or other asynchronous workflow in a stack. Look at the smart analytical reference architectures to see how Pub/Sub works with other GCP products and services. 
+
+
+## Pipelines with Dataflow
+
