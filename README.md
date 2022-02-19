@@ -384,7 +384,7 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - Dataflow vs Cloud Composer:
     - Dataflow is normally the preferred option for data ingestion pipelines. Cloud Composer may sometimes be used for ad-hob orchestration, or to manual control of Dataflow pipelines themselves. 
 
-- Qhiz:
+- Quiz:
   - What is the purpose of a trigger in Cloud Dataflow?
     - Triggers determine when to emit output data, and behave differently for bounded and unbounded data. Triggers determine when to emit aggregated results as data arrives. For bounded data, results are emitted after all of the input has been processed. For unbounded data, results are emitted when the watermark passes the end of the window, indicating that the system believes all input data for that window has been processed.
   - What is a sensible way to test a Cloud Dataflow pipeline before deploying it to production?
