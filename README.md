@@ -399,4 +399,58 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
     - Create a custom service account to use as the Dataflow controller service account in Project A. Grant storage viewer access for the bucket in Project B to the custom service account in Project A. By default, compute workers use your project’s Compute Engine service account as the controller service account. For more fine-grained access and control, you can use a custom service account from your job's project as the user-managed controller service account, then grant the necessary permissions to that service account from the other project.
   - Which operation can be used to invoke a user-specified function of each element of an input PCollection?
     - ParDo is a Beam transform for generic parallel processing. The ParDo processing paradigm is similar to the 'Map' phase of a Map/Shuffle/Reduce-style algorithm: a ParDo transform considers each element in the input PCollection, performs some processing function (your user code) on that element, and emits zero, one, or multiple elements to an output PCollection.
-    
+
+## Managed Spark with Cloud Dataproc
+
+- Dataproc overview
+  - Managed cluster service for hadoop and spark.
+  - Master node, worker nodes. 
+  - Cluster comes with hadoop, spark, zookeper, hive, pig, Tez, Jupyter notebook and GCS connetor.
+  - Cluster actions complete in 90 seconds.
+  - Pay-per-second minimum 1 minute.
+  - Scale up/down or turn off at will.
+  - Can auto-scale.
+  - Monitor with Stackdriver. 
+
+- Dataproc basics. 
+  - Regional or global.
+  - Single node cluster. 
+  - Standard cluster. Can add preemptible but without HDFS.
+  - High Availability Cluster. 
+  - Sumitting jobs: console, gcloud cli, dataproc API and SSH to Master Node. 
+  - Jobs: hadoop, spark, hive, pyspark, sql etc.
+  - Common stackdriver metrics to monitoring clusters:
+    - cluster/yarn/allocated_memory_percentage.
+    - cluster/hdfs/storage_utilization.
+    - cluster/hdfs/unhealthy_blocks.
+
+- Advanced dataproc:
+  - Custom clusters. 
+    - Custom cluster properties. 
+    - Initialization actions.
+    - Custom Java/Scala dependencies. 
+  - Auto-scale in yaml. 
+    - cooldown period.
+  - gracefulDecommissionTimeout: to don't remove busy nodes. 
+  - Do not use autoscaling with:
+    - High Availability clusters.
+    - HDFS (use cloud storage instead)
+    - Spark Structured Streaming. 
+    - Idle clusters.
+  - Workflow templates. 
+  - Local SSDs.
+  - GPUs (require custom init).
+
+- **Exam Tips**:
+  - Migrate hadoop and spark: dataproc.
+  - The biggest benefits of dataproc over a self-managed hadoop or spark cluster are the ease of scaling, being able to use cloud storage instead of HDFS, and the connectors to other GCP services including BigQuery and BigTable.
+  - Clusters options. 
+  - Get to know the open-source ecosystem.
+  - Cloud Dataflow is better por streaming. 
+
+- Quiz:
+  - Since preemptibles can be reclaimed at any time, preemptible workers do not store data.
+  - Cloud Dataproc has built-in integration with BigQuery, Cloud Storage, Cloud Bigtable, Stackdriver Logging, and Stackdriver Monitoring.
+  -  customer wants to run Spark jobs on a low-cost ephemeral Dataproc cluster, utilizing preemptible workers wherever possible, but needs to store the results of Dataproc jobs persistently. What would you recommend?
+    - Use the Cloud Storage connector, and specify GCS locations for the input and output of jobs.
+  - Cloud Dataproc clusters can be provisioned with a custom image that includes a user's pre-installed packages. You could alternatively use initialization actions to install the additional components, but this would be less efficient and incur more running time for ephemeral clusters.
