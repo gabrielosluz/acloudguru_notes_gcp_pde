@@ -454,3 +454,90 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   -  customer wants to run Spark jobs on a low-cost ephemeral Dataproc cluster, utilizing preemptible workers wherever possible, but needs to store the results of Dataproc jobs persistently. What would you recommend?
     - Use the Cloud Storage connector, and specify GCS locations for the input and output of jobs.
   - Cloud Dataproc clusters can be provisioned with a custom image that includes a user's pre-installed packages. You could alternatively use initialization actions to install the additional components, but this would be less efficient and incur more running time for ephemeral clusters.
+
+## NoSQL Data with Cloud BigTable
+#### Rewatch this section
+
+- BigTable Concepts
+  - Managed wide-column NoSQL Database.
+  - High throughput.
+  - Low latency.
+  - Scalability.
+  - High availability.
+  - HBase created as an open-source implementaion of the BigTable model.
+  - Sparse DB.
+  - Blocks of contiguous rows are sharded into tablets.
+  - Data stored in Google Colossus.
+  - Use cases:
+    - Marketing and financial transactional data.
+    - Time Series and IoT.
+  
+![alt text](./img/img16.png)
+
+- BigTable Architecture
+  - Instance: instance type, storage type, app profiles. 
+    - Cluster: 
+      - Node.
+  - Colossus: store data.
+  - Production vs Development.
+  - Storage: SSD and HDD.
+  - Aplication profiles: custom app-specific settings for handling incoming connections.
+  - Single (single row transactions) vs multicluster routing.
+  - Instances can run up to four clusters.
+  - Clusters exist in a single zone.
+  - Up to 30 nodes per projetc (soft limit).
+  - Maximum of 1000 tables per instance.
+  - Security:
+    - Cloud IAM roles:
+      - Applied at the project or instance level to:
+        - Restrict access or administration.
+        - Restrict reads and writes.
+        - Restrict development or production access. 
+
+- BigTable data model.
+  - Empty cells won't consume any space in the table.
+  - Row up to 10 Mb.
+  - Garbage collector (policy).
+  - Each cells can have multiple version.
+
+- BigTable Schema Design. Rewatch this lecture.***
+  - Query planning.
+    - Field promotion.
+      - Never put timestamp in the start of row key.
+
+- BigTable Advanced Topics:
+  - Monitoring: stackdriver and Console.
+    - Average CPU and hottest node.
+
+- **Exam Tips**:
+  - Know when to choose BigTable.
+    - Many exam questions are based on choosing the right product for the workload. If migrating from onpremise environment, look for HBase. Also consider when BigTable beats BigQuery. Look for time-series data, or use cases where latency in an issue. 
+  - Understand BigTable Architecture.
+    - You should understand the conepts of a instance and a cluster, where BigTable stores data, and how tablets are re-balanced by the service between nodes. 
+  - Understand row keys.
+    - This can't be overstated: the linear scale and performance of BigTable depends on good row keys. Make sure you have a solid understanding of row key design, as in the exam may have to either choose an optimal row key, or point out the flaws in a bad one. 
+  - Tall vs Wide.
+    - Understande the difference between a wide table and a tall table. Wide tables store multiple columns for a given row key where the query pattern is likely to require all the information about a single entity. Tall tables suit time-series or graph data and often only contain a single column.
+
+- **Quiz**:
+  - Which of these identifiers would make a good component of a row key?
+    - A reverse domain name would make a good row key, especially if each row's data overlaps with adjacent rows. This allows Cloud Bigtable to compress your data more efficiently. See: https://cloud.google.com/bigtable/docs/schema-design 
+    Good row key design is essential. Cloud Bigtable queries use the row key, a row key prefix, or a row range to retrieve the data. Other types of queries trigger a full table scan, which is much less efficient. Using human-readable values makes it much easier to troubleshoot issues with Cloud Bigtable. See: https://cloud.google.com/bigtable/docs/schema-design
+  - If you have 2 replicating clusters in your Bigtable instance, how can you ensure that your application will be guaranteed strong consistency for its transactions?
+    - Strong consistency can only be achieved using single-cluster routing. Eventual consistency is normally quick but can take several minutes depending on the distance between clusters. If your application requires strong consistency, refactoring is unlikely to be an option without a complete redesign.
+  - What action should you take if you observe that Bigtable performance is poor on a subset of queries?
+    - Use the Key Visualizer tool to identify hot spots and consider changing how the row key distributes rows. If a subset of queries are performing poorly, there is likely a hot spot being caused by the row key design. Key Visualizer provides a heatmap of the load across your entire table in a way that is difficult to understand using standard debugging techniques. Increasing the size of a cluster is not a long term solution, and adding additional clusters will not affect write throughput.
+  - For which types of data workload would Bigtable not be a good fit?
+    - Cloud Bigtable does not support SQL queries or the multiple indexes required for true relational data. If your dataset is too small, Bigtable won't be able to balance tables in a way that optimizes performance.
+  - Which of these identifiers would make a bad component of a row key?
+    - Timestamp at the start of a multi-component row key. Sequential numeric ID.
+  - How does Bigtable manage rows, tables, and tablets?
+    - Tables are sorted into contiguous rows and are sharded into tablets. A Cloud Bigtable table is sharded into blocks of contiguous rows, called tablets, to help balance the workload of queries.
+  - How does Bigtable manage the storage of tablets?
+    - Tablets are stored in Google Colossus, but a cluster node has a limit on how much storage it can process. Data is never stored in Cloud Bigtable nodes themselves; each node has pointers to a set of tablets that are stored on Colossus. However, CPU resources are required for a node to manage all of its associated tablets.
+  - In a region with 4 zones, what is the maximum number of Bigtable clusters available?
+    - 4 . In a region with 4 zones, a BigTable instance can contain up to 4 clusters. Compute Engine is a red herring, it has nothing to do with Cloud Bigtable.
+
+
+    
+    
