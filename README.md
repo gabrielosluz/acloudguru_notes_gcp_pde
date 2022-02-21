@@ -538,6 +538,134 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - In a region with 4 zones, what is the maximum number of Bigtable clusters available?
     - 4 . In a region with 4 zones, a BigTable instance can contain up to 4 clusters. Compute Engine is a red herring, it has nothing to do with Cloud Bigtable.
 
+## Data Analytics with BigQuery
 
+- BigQuery Basics:
+  - Peta-byte, scale, serverless, highly-scalable cloud enterprise data warehouse.
+  - Supports Standard SQL.
+  - Support federated data.
+  - Automatic backups.
+  - Web console, cli (bq), client libraries.
+  - Dataset kind of database. 
+  - Ingestion: real time events, batch sources.
     
-    
+![alt text](./img/img17.png)
+
+  - Job: action that is run in BQ on your behalf:
+    - Load.
+    - Export.
+    - Query.
+    - Copy.
+
+  - Query priority: Interactively (default), batch.
+  - Tables can be partitioned.
+  - Capacitor columnar data format.
+    - Sopports semi-structured data (nested and repeate fields).
+
+  - Record (struct) data type.
+  - Import: csv, json (newline delimited), avro (preferential), parquet, ORC, cloud datastore, cloud firestore.
+  - A view is a virtual table defined by a SQL query.
+    - Benefits:
+      - Control access to data.
+      - Reduce query complexity.
+      - Constructing logical tables.
+      - Ability to create authorized view.
+    - Limitations:
+      -  Cannot export data.
+      - Cannot combine sqls.
+      - Cannot use json API to retrieve data from view.
+      - no user defined functions.
+      - no wildcard table reference.
+      - limited to 1000 authorized views per dataset.
+  
+![alt text](./img/img18.png)
+
+- Table partitioning and clustering
+  - Why use partition:
+    - Improve query performance.
+    - Control costs.
+
+![alt text](./img/img19.png)
+
+![alt text](./img/img20.png)
+
+- Querying clustered tables:
+  - Filter clustered columns in the order they were specified.
+  - Avoid using cluster columns in complex expressions.
+
+- Best practices using BQ
+  - Slot: unit of computacional capacity required to execute SQL query.
+  - Number of slots: query size and complexity.
+  - BQ automatically manages slots quotas.
+  - Stackdriver to see slots usage.
+  - Query plan.
+
+![alt text](./img/img21.png)
+
+  - Controlling costs:
+    - Avoid using SELECT *
+    - Use Preview to sample data.
+    - Price queries before executing them.
+    - Using limit does not affect cost.
+    - Partition by date.
+    - Materialise query result in stages.
+    - Use streaming inserts with caution.
+  - Query performance:
+    - Input data and data sources.
+      - Prune partitioned queries.
+      - Denormalise data whener possible.
+      - Use external data source appropriately.
+      - Avoid excessive wildcard tables.
+    - Shuffling.
+    - Query computation.
+      - Avoid repeatedly transforming data via SQL queries.
+      - Avoid JavaScript user-defined functions.
+      - Order query operations to maximise performance.
+      - Optimise JOIN patterns.
+    - Materialisation.
+    - SQL anti-patterns.
+  - Optimising storage.
+
+- Securing BQ:
+  - Roles related to BQ.
+  - Primite roles: at the project level (owener, editor and viewer).
+  - Predefined roles: granular, service-specific, GCP managed.
+    - Role: bigquery.admin, bigquery.dataViewer.
+    - Permissions: bigquery.jobs.create, biquery.datasets.create. 
+  - Custom roles.
+  - Sensitive data: credit card, medical info, social security, names, address.
+    - CLOUD DLP (Data Loss Prevention):
+      - Fully managed.
+      - Identity and protect sensitive data at scale.
+  - DEK: Data Encryption Key.
+
+- BQ monitoring and logging:
+  - Stackdriver log streams: admin, system, data.
+  - Dashboard, Alerts. 
+  - CloudAudit Logs: autiData (old), BigQueryAuditMetadata.
+
+- Machine Learning with BQ:
+  - BQ ML.
+  - bq cli, API BQ, web console, jupyter.
+  - Linear regression, binary logistic regression, k-means, multi-class logistic regression.
+  - Models trained and evaluated using sql. 
+
+- **Exam Tips**:
+  - Understand good organizational design:
+    - You should be able to design sustems that use BQ at an organizational and project level. This includes considerations of how different teams should be grated different types of access to BQ, and how theses decisions also affect cost control. 
+  - Learn the most commom roles.
+  - Consider cost when design queries.
+  - Use partition.
+  - Optimize query operations and JOINS. 
+
+- **Quiz**:
+
+  - Your company stores data in BigQuery for long-term and short-term analytics queries. Most of the jobs only need to study the last 7 days of data. Over time, the cost of queries keeps going up. How can you redesign the database to lower the cost of the most frequent queries?
+    - Use DATE partitioned tables. A partitioned table is a special table that is divided into segments, called partitions, that make it easier to manage and query your data. By dividing a large table into smaller partitions, you can improve query performance, and you can control costs by reducing the number of bytes read by a query.
+  - What could you consider to improve BigQuery performance for queries that use filters or aggregation against particular columns?
+    - Use clustered partitioned tables. Clustering can improve the performance of certain types of queries such as queries that use filter clauses and queries that aggregate data. When you submit a query that contains a clause that filters data based on the clustering columns, BigQuery uses the sorted blocks to eliminate scans of unnecessary data.
+  - You are required to share a subset of data from a BigQuery data set with a 3rd party analytics team. The data may change over time, and you should not grant unnecessary projects permissions to this team if you can avoid it. How should you proceed?
+    - Create an authorized view based on a specific query for the subset of data, and provide access for the team only to that view. An authorized view allows you to share query results with particular users and groups without giving them access to the underlying tables.
+  - You are required to load a large volume of data into BigQuery that does contain some duplication. What should you do to ensure the best query performance once the data is loaded?
+    - Denormalize the data by using nested or repeated fields. BigQuery performs best when your data is denormalized. Rather than preserving a relational schema, such as a star or snowflake schema, you can improve performance by denormalizing your data and taking advantage of nested and repeated fields.
+
