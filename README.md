@@ -669,3 +669,22 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
   - You are required to load a large volume of data into BigQuery that does contain some duplication. What should you do to ensure the best query performance once the data is loaded?
     - Denormalize the data by using nested or repeated fields. BigQuery performs best when your data is denormalized. Rather than preserving a relational schema, such as a star or snowflake schema, you can improve performance by denormalizing your data and taking advantage of nested and repeated fields.
 
+## Exploration with Cloud Datalab
+- Datalab concepts:
+  - Jupyter notebook.
+  - Separate command from gcloud.
+  - Command datalab.
+
+## Vizualization with Cloud Data Studio
+- BI: reporting, analytics, dashboards.
+- Discrete variables: fixed values. 
+- Continuous variable: any value in certain range.
+- 
+
+![alt text](./img/img22.png)
+
+## Orchestration with Cloud Composer
+- Apache Airflow managed. 
+
+![alt text](./img/img23.png)
+
