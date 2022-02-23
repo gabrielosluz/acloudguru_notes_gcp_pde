@@ -679,7 +679,6 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
 - BI: reporting, analytics, dashboards.
 - Discrete variables: fixed values. 
 - Continuous variable: any value in certain range.
-- 
 
 ![alt text](./img/img22.png)
 
@@ -687,4 +686,101 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
 - Apache Airflow managed. 
 
 ![alt text](./img/img23.png)
+
+## Machine Learning with Tensorflow:
+
+- **Quiz**:
+- Which of these problems would require a regression model?
+  - Estimating the price of a house in 5 years time. Regression models attempt to predict numerical output based on known historical data and features.
+- What are hyperparameters used for in machine learning?
+  - Hyperparameters are the variables that govern the training process itself. Your hyperparameters are the variables that govern the training process itself. They are configuration variables, not directly related to the training data.
+- Which statement correctly describes the relationship between Keras and TensorFlow?
+  - Keras is a high-level deep-learning Python library that includes support for TensorFlow functionality. Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano.
+
+## Using Pre-Trained ML Cloud APIs
+
+- Google AI: AI building blocks (APIs), AI HUB, AI Platform.
+
+![alt text](./img/img24.png)
+
+- **Quiz**:
+- What categories are returned in the safeSearchAnnotation response from the Cloud Vision API?
+  - Adult, Spoof, Medical, Violence, Racy. SafeSearch Detection detects explicit content such as adult content or violent content within an image. This feature uses five categories (adult, spoof, medical, violence, and racy) and returns the likelihood that each is present in a given image.
+- What would be the best approach to transcribing a conversation from a recorded telephone call?
+  - Use asynchronous speech recognition. Set enableSpeakerDiarization to true and the model to 'phone_call' in the RecognitionConfig. Speech-to-Text can recognize multiple speakers in the same audio clip using Speaker Diarization. Use asynchronous speech recognition to recognize audio that is longer than a minute.
+- f you make a request to the documents:analyzeEntities endpoint of the Natural Language API, what sort of information can you expect in the response?
+  - An array of Entity objects that will each contain metadata including a Wikipedia URL and Knowledge Graph MID, if available. Entity Analysis inspects the given text for known entities (proper nouns such as public figures, landmarks, etc.), and returns information about those entities.
+- How should you interpret the documentSentiment response from the Natural Language API?
+  - 'score' represents an overall emotional leaning of a test from -1.0 (negative) to 1.0 (positive), and 'magnitude' indicates the overall strength of emotion. 'magnitude' is not normalized so longer text blocks may have greater magnitudes. A response value to the Gettysburg Address of 0.2 score indicates a document which is slightly positive in emotion, while the value of 3.6 indicates a relatively emotional document, given its small size (of about a paragraph). Note that the first sentence of the Gettysburg address contains a very high positive score of 0.8.
+- How would you begin to design a Dialogflow agent that can answer requests for weather forecasts?
+  - Create an Intent for requesting a weather forecast, specify training phrases based on real-world speech patterns that would ask this question, and define the structured parameters that can be used to create a response.An intent categorizes an end-user's intention for one conversation turn. Training phrases are example phrases for what end-users might say. When building an agent, you control how data is extracted by annotating parts of your training phrases and configuring the associated parameters.
+- What would be the most efficient way to transcribe audio from an input video while also filtering out profanity?
+  - Use the Cloud Video Intelligence API, requesting the SPEECH_TRANSCRIPTION feature, and set filterProfanity to true in the speechTranscriptionConfig. The Video Intelligence API can transcribe speech to text from supported video files. Use the filterProfanity option to filter out known profanities in transcriptions. Matched words are replaced with the leading character of the word followed by asterisks.
+- What are some of the properties that can be returned by the Cloud Vision API when requesting the FACE_DETECTION feature?
+  - Positions of the features of the face (eg. eyes and noise), likelihood of certain emotions, likelihood of headwear. Face Detection detects multiple faces within an image along with the associated key facial attributes such as emotional state or wearing headwear. Specific individual Facial Recognition is not supported.
+- How do you provide GCP authentication credentials when making request to Cloud MP APIs from the command line with curl?
+  - Configure authentication with gcloud, then use 'print-access-token' to include an authorization bearer in the HTTP request. The gcloud tool must be properly configured and authenticated. It can then be used to generate access tokens which can be included in the header of the HTTP request.
+- Which features could you include in your request to the Cloud Vision API to detect text in images?
+  - TEXT_DETECTION and DOCUMENT_TEXT_DETECTION. TEXT_DETECTION detects and extracts text from any image. DOCUMENT_TEXT_DETECTION also extracts text from an image, but the response is optimized for dense text and documents.
+
+## AutoML Platform
+
+![alt text](./img/img25.png)
+
+- Transfer learning.
+
+![alt text](./img/img26.png)
+
+- AutoML Vision Edge: export custom trained models for edge devices.
+
+![alt text](./img/img27.png)
+
+![alt text](./img/img28.png)
+
+- **Quiz**:
+  - You have a large number of images that you wish to process through a custom AutoML Vision model. Time is not a factor, but cost is. Which approach should you take?
+    - Make an asynchronous prediction request for the entire batch of images using the batchPredict method. Batch prediction often offers a lower cost per inference and higher throughput than synchronous (online) prediction. However, batch prediction produces a long-running operation (LRO), meaning that results are only available once the LRO has completed.
+  - You wish to build an AutoML Natural Language model for classifying some documents with user-defined labels. How can you ensure you are providing quality training data for the model?
+    - Ensure you provide at minimum 10 training documents per label, but ideally 100 times more documents for the most common label than for the least common label. Quality training data for an AutoML Natural Language classification model should contain varied input documents, with a minimum of 10 documents per label, and ideally 100 times more documents for the most common label than for the least common label. The maximum number of documents for training data is 1,000,000.
+  - How can you import training data into an AutoML Natural Language dataset?
+    - As TXT, PDF, TIF or ZIP files, or as a CSV containing references to documents and training labels, from a local upload or Cloud Storage bucket. You can import document URIs and labels for documents from a CSV file stored in a Cloud Storage bucket, and upload training documents directly from your local computer or a Cloud Storage bucket.
+  - Which AutoML Vision feature would you use to detect multiple objects in an image?
+    - Object localization. Object localization detects multiple objects in an image and provides information about the object and where the object was found in the image.
+  - You're developing a mobile application that allows a food processing business to detect fruit that has gone bad. Staff at warehouses will use mobile devices to take pictures of fruit to determine whether it should be discarded. Which GCP services could you use to accomplish this?
+    - Train an AutoML Vision model using labeled images of fruit that has gone bad. Use AutoML Vision Edge in ML Kit (now custom model API) to deploy the custom model to mobile devices using ML Kit client libraries. The AutoML Vision Edge in ML Kit (now part of the custom model API) can host trained ML models on mobile devices, or connect to AutoML models in the cloud. It can also be used to gather training data for building models.
+
+## Operationalizing Machine Learning Models
+
+![alt text](./img/img29.png)
+
+- Kubeflow: ML toolkit for Kubernetes.
+  - Web UI or cli. 
+
+
+## Data Security and Industry Regulation
+
+- Principle of least privilege.
+- Org >> Folder >> Projects >> Resources.
+- Grant roles to groups instead of individual.
+- Check most important roles for the most important resources. 
+- GCP DLP: Data Loss Prevention: redact or remove sensitive data in text and images. Can become expensive. 
+
+
+## Dataprep
+
+- Exploring, cleaning and preparing data. 
+- Visually define transformations.
+- Export to Cloud dataflow.
+- Trifacta. 
+
+- Flows, datasets, recipes (steps to transformations), automator.
+
+
+
+
+
+
+
+
+
 
