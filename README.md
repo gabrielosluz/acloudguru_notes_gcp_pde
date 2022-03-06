@@ -779,7 +779,7 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
 
 # Qwikilabs Stuff
 
-## Machine Learning Models: 
+## Google Cloud Big Data and Machine Learning Fundamentals: 
 
 ![alt text](./img/img30.png)
 
