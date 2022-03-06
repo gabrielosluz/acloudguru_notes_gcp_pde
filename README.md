@@ -777,10 +777,21 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
 
 
 
+# Qwikilabs Stuff
 
+## Machine Learning Models: 
 
+![alt text](./img/img30.png)
 
+![alt text](./img/img31.png)
 
+![alt text](./img/img32.png)
+
+![alt text](./img/img33.png)
+
+![alt text](./img/img34.png)
+
+![alt text](./img/img35.png)
 
 
 
