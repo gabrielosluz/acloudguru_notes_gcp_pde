@@ -794,4 +794,74 @@ Source: [A Cloud Guru](https://acloudguru.com/course/google-certified-profession
 ![alt text](./img/img35.png)
 
 
+## Data Engineering on Google Cloud
+
+### Modernizing Data Lakes and Data Warehouses with GCP
+
+![alt text](./img/img36.png)
+
+![alt text](./img/img37.png)
+
+- IAM applied at the bucket level. ACL at the bucket level or individual obj.
+
+![alt text](./img/img38.png)
+
+- Cloud SQL: 
+
+![alt text](./img/img39.png)
+
+![alt text](./img/img40.png)
+
+- Dataflow: serveless.
+- Dtaproc: fully managed.
+
+![alt text](./img/img41.png)
+
+![alt text](./img/img42.png)
+
+* Rewatch: Get started with BigQuery
+
+![alt text](./img/img43.png)
+
+![alt text](./img/img44.png)
+
+![alt text](./img/img45.png)
+
+![alt text](./img/img46.png)
+
+##### Arrays:
+
+You can do some pretty useful things with arrays like:
+
+- finding the number of elements with ARRAY_LENGTH(<array>)
+- deduplicating elements with ARRAY_AGG(DISTINCT <field>)
+- ordering elements with ARRAY_AGG(<field> ORDER BY <field>)
+- limiting ARRAY_AGG(<field> LIMIT 5)
+
+##### UNNEST:
+
+- You need to UNNEST() arrays to bring the array elements back into rows
+- UNNEST() always follows the table name in your FROM clause (think of it conceptually like a pre-joined table)
+
+##### A STRUCT can have:
+
+- one or many fields in it
+- the same or different data types for each field- 
+it's own alias
+
+- Structs are containers that can have multiple field names and data types nested inside.
+
+- An arrays can be one of the field types inside of a Struct
+
+#### Partitioning
+
+![alt text](./img/img47.png)
+
+![alt text](./img/img48.png)
+
+![alt text](./img/img49.png)
+
+![alt text](./img/img50.png)
+
+![alt text](./img/img51.png)
 
