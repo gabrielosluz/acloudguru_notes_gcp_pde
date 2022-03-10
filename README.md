@@ -865,3 +865,30 @@ it's own alias
 
 ![alt text](./img/img51.png)
 
+### Building Batch Data Pipelines on GCP
+
+#### Dataproc
+
+![alt text](./img/img52.png)
+
+![alt text](./img/img53.png)
+
+![alt text](./img/img54.png)
+
+![alt text](./img/img55.png)
+
+![alt text](./img/img56.png)
+
+![alt text](./img/img57.png)
+
+![alt text](./img/img58.png)
+
+![alt text](./img/img59.png)
+
+
+
+
+
+
+
+
