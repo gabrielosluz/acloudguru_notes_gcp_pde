@@ -886,9 +886,11 @@ it's own alias
 ![alt text](./img/img59.png)
 
 
+### Smart Analytics, Machine Learning, and AI on Google Cloud
 
+![alt text](./img/img60.png)
 
+![alt text](./img/img61.png)
 
-
-
+![alt text](./img/img62.png)
 
